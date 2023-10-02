@@ -1,18 +1,31 @@
 import * as React from 'react';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage'
+import ServicesPage from './pages/ServicesPage';
+import ContactPage from './pages/ContactPage';
+import Navbar from './components/Navbar';
+import { Container } from '@mui/material';
 
 export default function App() {
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Material UI Vite.js example
-        </Typography>
-        <Button variant="contained">Hello world</Button>
-      </Box>
-    </Container>
+    <Router>
+      <div className='App'>
+        <Navbar />
+        <div className='content'>
+          <Container>
+            <Routes>
+              <Route path="/" element={< HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route exact path="*" element={<HomePage />} />
+            </Routes>
+          </Container>
+        </div>
+      </div>
+    </Router>
+
   );
 }
