@@ -1,0 +1,4 @@
+# Tarvii REST Client extensionin, että toimii
+GET http://localhost:3001/api/accounts
+
+###
