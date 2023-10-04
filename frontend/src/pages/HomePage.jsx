@@ -28,15 +28,15 @@ const Home = () => {
             <div className="itemContainer">
                 <div className="smallerContainer">
                     <Typography variant="overline" display="block" color="secondary" sx={{fontWeight: 'bold'}}>plants & flowers</Typography>
-                    <img src={topDownPlants} class="smallerPics"></img>
+                    <img src={topDownPlants} className="smallerPics"></img>
                 </div>
                 <div className="smallerContainer">
                     <Typography variant="overline" display="block" color="secondary" sx={{fontWeight: 'bold'}}>our services / maintanance</Typography>
-                    <img  src={plantWatering} class="smallerPics"></img>
+                    <img  src={plantWatering} className="smallerPics"></img>
                 </div>
                 <div className="smallerContainer">
                     <Typography variant="overline" display="block" color="secondary" sx={{fontWeight: 'bold'}}>previous work</Typography>
-                    <img src={leaves} class="smallerPics"></img>
+                    <img src={leaves} className="smallerPics"></img>
                 </div>
             </div>
         </Container>
