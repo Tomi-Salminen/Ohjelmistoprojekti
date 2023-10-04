@@ -14,8 +14,9 @@ import MenuItem from '@mui/material/MenuItem';
 import GrassIcon from '@mui/icons-material/Grass';
 import { ThemeProvider } from '@mui/material/styles';
 import { createTheme } from '@mui/material/styles';
+import { NavLink } from 'react-router-dom';
 
-const pages = ['HOME', 'ABOUT', 'SERVICES', 'CONTACT'];
+const pages = ['home', 'about', 'services', 'contact'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const NavTheme = createTheme({
@@ -106,7 +107,7 @@ const Navbar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={handleCloseNavMenu} component={NavLink} to={"/" + page}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -134,6 +135,8 @@ const Navbar = () => {
             {pages.map((page) => (
               <Button
                 key={page}
+                component={NavLink}
+                to={"/" + page}
                 onClick={handleCloseNavMenu}
                 sx={{ display: 'block', color: 'black' }}
               >
