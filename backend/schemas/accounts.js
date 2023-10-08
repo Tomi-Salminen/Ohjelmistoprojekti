@@ -1,7 +1,7 @@
 const Joi = require("joi");
 
 const AccountSchema = Joi.object().keys({
-  name: Joi.string()
+  username: Joi.string()
   .min(3)
   .max(100)
   .required()

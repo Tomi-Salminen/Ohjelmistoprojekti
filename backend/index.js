@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const userRoutes = require("./routes/accounts");
+const accountRoutes = require("./routes/accounts");
 require("dotenv").config();
 
 const cors = require("cors");
@@ -18,7 +18,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
-app.use("/api/accounts", userRoutes);
+app.use("/api/accounts", accountRoutes);
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 

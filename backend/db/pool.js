@@ -1,7 +1,6 @@
-const { Client } = require('pg')
+const { Pool } = require('pg')
 
-// Ei testattu, voi olla että ei toimi :D
-const client = new Client({
+const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'postgres',
@@ -12,4 +11,4 @@ const client = new Client({
   connectionTimeoutMillis: 2000,
 })
 
-module.exports = client;
+module.exports = pool;

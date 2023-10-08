@@ -1,58 +1,65 @@
-const client = require("../db/client");
+const pool = require("../db/pool");
 
 const accounts = {
+  create: (account) =>
+    new Promise((resolve, reject) => {
+      pool.query(
+        "INSERT INTO accounts VALUES ($1, $2, $3, $4, $5)",
+        [
+          account.user_id,
+          account.username,
+          account.password,
+          account.email,
+          account.created_on
+        ],
+        (err, res) => {
+          if (err) {
+            reject(err.message);
+          } else {
+            resolve(res.rows);
+          }
+        }
+      );
+    }),
   findAll: () =>
     new Promise((resolve, reject) => {
-      client.connect();
-
-      client.query("Select * from accounts", (err, res) => {
+      pool.query("SELECT * from accounts", (err, res) => {
         if (err) {
-            reject(err.message);
+          reject(err.message);
         } else {
-            resolve(res.rows);
+          resolve(res.rows);
         }
-        client.end;
       });
     }),
+  findByEmail: (email) =>
+    new Promise((resolve, reject) => {
+      pool.query(
+        "SELECT * FROM accounts WHERE email = $1",
+        [email],
+        (err, res) => {
+          if (err) {
+            reject(err.message);
+          } else {
+            resolve(res.rows);
+          }
+        }
+      );
+    }),
 
-//   findByEmail: (email) =>
-//     new Promise((resolve, reject) => {
-//       pool.getConnection((err, connection) => {
-//         if (err) {
-//           return reject(err);
-//         }
-//         connection.query(
-//           "SELECT * FROM users WHERE email LIKE ?;",
-//           email,
-//           (err, result) => {
-//             connection.release();
-//             if (err) {
-//               return reject(err);
-//             }
-//             resolve(result);
-//           }
-//         );
-//       });
-//     }),
-//   findById: (id) =>
-//     new Promise((resolve, reject) => {
-//       pool.getConnection((err, connection) => {
-//         if (err) {
-//           return reject(err);
-//         }
-//         connection.query(
-//           "SELECT name, email FROM users WHERE id LIKE ?;",
-//           id,
-//           (err, result) => {
-//             connection.release();
-//             if (err) {
-//               return reject(err);
-//             }
-//             resolve(result);
-//           }
-//         );
-//       });
-//     }),
+  findById: (id) =>
+    new Promise((resolve, reject) => {
+      pool.query(
+        "SELECT * FROM accounts WHERE user_id = $1",
+        [id],
+        (err, res) => {
+          if (err) {
+            reject(err.message);
+          } else {
+            resolve(res.rows);
+          }
+        }
+      );
+    }),
 };
 
 module.exports = accounts;
