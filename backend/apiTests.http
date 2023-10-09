@@ -1,0 +1,26 @@
+# Tarvii REST Client extensionin, että toimii
+GET http://localhost:3001/api/accounts
+
+###
+
+GET http://localhost:3001/api/accounts/1
+
+###
+
+POST http://localhost:3001/api/accounts/signup HTTP/1.1
+content-type: application/json
+
+{
+    "username": "Testaaja",
+    "password": "asda2312L;;:sAa",
+    "email": "Testaaja.Testaa@gmail.com"
+}
+###
+POST http://localhost:3001/api/accounts/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "Testaaja.Testaa@gmail.com",
+    "password": "asda2312L;;:sAa"
+}
+###

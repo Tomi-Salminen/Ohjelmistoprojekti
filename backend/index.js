@@ -1,11 +1,25 @@
-const express = require('express');
+const express = require("express");
+const bodyParser = require("body-parser");
+const accountRoutes = require("./routes/accounts");
+require("dotenv").config();
+
+const cors = require("cors");
+
+const PORT = process.env.PORT || 3001;
+
 const app = express();
-const port = 3000;
 
-app.get('/', async (req, res) => {
-  res.send('Hello World!');
-});
+// Cors asetukset
+const corsOptions = {
+  origin: process.env.ORIGIN || "http://localhost:5173",
+  optionsSuccessStatus: 200, // For legacy browser support
+};
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
+app.use(cors(corsOptions));
+app.use(bodyParser.json());
+
+app.use("/api/accounts", accountRoutes);
+
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+
+module.exports = app;
