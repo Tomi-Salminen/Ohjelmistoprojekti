@@ -42,7 +42,7 @@ const signUpUser = async (req, res) => {
     }
 
     res.status(201).json({
-      id: newUser.id,
+      id: newUser.user_id,
       email: newUser.email,
     });
   } catch (err) {
@@ -88,7 +88,7 @@ const loginUser = async (req, res) => {
     );
 
     res.status(201).json({
-      id: identifiedUser.id,
+      id: identifiedUser.user_id,
       email: identifiedUser.email,
       token,
     });
@@ -102,7 +102,14 @@ const getUserById = async (req, res) => {
   try {
     const { uid } = req.params;
     const response = await accounts.findById(uid);
-    res.status(200).send(response);
+    const account = {
+      id: response[0].user_id,
+      email: response[0].email,
+      username: response[0].username,
+      created_on: response[0].created_on,
+      last_login: response[0].last_login,
+    };
+    res.status(200).send(account);
   } catch (err) {
     console.log(err);
     res.status(500).send("Something went wrong!");
