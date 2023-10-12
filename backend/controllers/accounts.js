@@ -80,12 +80,17 @@ const loginUser = async (req, res) => {
   try {
     const token = jwt.sign(
       {
-        id: identifiedUser.id,
+        id: identifiedUser.user_id,
         email: identifiedUser.email,
       },
       process.env.JWT_KEY,
       { expiresIn: "24h" }
     );
+    const account = {
+      id: identifiedUser.user_id,
+      last_login: new Date().toISOString(),
+    }
+    const result = await accounts.updateLastLogin(account);
 
     res.status(201).json({
       id: identifiedUser.user_id,
