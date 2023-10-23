@@ -1,6 +1,6 @@
 name: Backend-PullRequest
 
-run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
+run-name: Pull request to main by @${{ github.actor }}
 
 on:
   push:
@@ -46,7 +46,7 @@ jobs:
       - name: Create database
         working-directory: ./backend
         run: |
-            PGPASSWORD=postgres psql -U postgres -h 127.0.0.1 -p ${{ job.services.postgres.ports[5432] }} -d postgres < init.sql"
+            PGPASSWORD=postgres psql -U postgres -h 127.0.0.1 -p ${{ job.services.postgres.ports[5432] }} -d postgres;"
       - name: Running tests
         working-directory: ./backend
         run: npm run test
