@@ -44,7 +44,7 @@ jobs:
         run: npm install
 
       - name: Create database
-        working-directory: ./backend
+        working-directory: ./db
         run: |
             postgres -h127.0.0.1 -P3306 -uroot -ppassword test_db < init.sql
       - name: Running tests
