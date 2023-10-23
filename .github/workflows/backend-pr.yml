@@ -40,8 +40,9 @@ run-tests:
         node-version: '20'
     
     - name: Install dependencies
-        working-directory: ./backend
-        run: npm install
+      working-directory: ./backend
+      run: npm install
+
     - name: Create database
       working-directory: ./backend
       run: |
