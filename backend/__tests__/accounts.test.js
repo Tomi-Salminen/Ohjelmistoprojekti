@@ -3,7 +3,8 @@ const supertest = require("supertest");
 const app = require("../index");
 const pool = require("../db/pool");
 let user_id = "";
-describe("SIGNUP users endpoint", () => {
+
+describe("Accounts endpoint", () => {
   beforeAll(async () => {
     const deleteQuery = "DELETE FROM accounts WHERE email=$1;";
     pool.query(deleteQuery, ["testi1@gmail.com"], (err, result) => {
