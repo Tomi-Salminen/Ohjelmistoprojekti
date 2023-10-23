@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const accountRoutes = require("./routes/accounts");
+const plantsRoutes = require("./routes/plants");
 require("dotenv").config();
 
 const cors = require("cors");
@@ -19,6 +20,7 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 app.use("/api/accounts", accountRoutes);
+app.use("/api/plants", plantsRoutes);
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
