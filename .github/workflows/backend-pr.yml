@@ -20,7 +20,7 @@ jobs:
           env:
             POSTGRES_PASSWORD: postgres
             POSTGRES_USER: postgres
-            POSTGRES_DB: postgres
+            POSTGRES_DB: test_db
 
           options: >-
             --health-cmd pg_isready
@@ -46,7 +46,7 @@ jobs:
       - name: Create database
         working-directory: ./db
         run: |
-            postgres -h127.0.0.1 -P3306 -uroot -ppassword test_db < init.sql
+            psql -h127.0.0.1 -P5432 -uroot -ppassword test_db < init.sql
       - name: Running tests
         working-directory: ./backend
         run: npm run test
