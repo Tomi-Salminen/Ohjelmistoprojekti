@@ -3,9 +3,8 @@ name: Backend-PullRequest
 run-name: Pull request to main by @${{ github.actor }}
 
 on:
-  push:
+  pull_request:
     branches:
-      - backend_branch
       - main
     paths:
       - backend/**
