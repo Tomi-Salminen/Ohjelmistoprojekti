@@ -1,5 +1,6 @@
 const { Pool } = require('pg')
 
+// TODO: siirrä nämä .env tiedostoon ja tee tarvitavat muutokset workflow tiedosotihin
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
