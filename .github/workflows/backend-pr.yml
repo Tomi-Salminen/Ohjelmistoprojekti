@@ -50,6 +50,8 @@ jobs:
       - name: Running tests
         working-directory: ./backend
         run: npm run test
-        #env:
+        env:
+          #TODO: Lisää tämä githubin "secretiksi"
+          JWT_KEY: YOURSECRETKEYGOESHERE
           #TODO: Lisää env muuttujat
 
