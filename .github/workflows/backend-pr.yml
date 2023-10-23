@@ -18,9 +18,9 @@ jobs:
           image: postgres
 
           env:
-            POSTGRES_PASSWORD: secret
+            POSTGRES_PASSWORD: postgres
             POSTGRES_USER: postgres
-            POSTGRES_DB: test_db
+            POSTGRES_DB: postgres
 
           options: >-
             --health-cmd pg_isready
@@ -46,7 +46,7 @@ jobs:
       - name: Create database
         working-directory: ./db
         run: |
-            PGPASSWORD=secret psql -h 127.0.0.1 -p 5432 -U postgres -d test_db -a -f init.sql
+            PGPASSWORD=postgres psql -h 127.0.0.1 -p 5432 -U postgres -d postgres -a -f init.sql
       - name: Running tests
         working-directory: ./backend
         run: npm run test
