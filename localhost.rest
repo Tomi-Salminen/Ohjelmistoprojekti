@@ -1,0 +1,18 @@
+GET http://localhost:3001/api/accounts
+
+###
+POST http://localhost:3001/api/accounts/signup 
+Content-Type: application/json
+
+{
+  "username": "Peter Parker",
+  "email": "peter@parker.com",
+  "password": "peterparker"
+}
+
+
+###
+GET http://localhost:3001/api/plants
+
+###
+GET http://localhost:3001/api/plants/1
