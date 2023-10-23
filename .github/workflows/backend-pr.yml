@@ -3,7 +3,7 @@ name: Backend-PullRequest
 run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
 
 on:
-  pull_request:
+  push:
     branches:
       - backend_branch
       - main
