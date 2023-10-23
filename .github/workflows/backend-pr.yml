@@ -46,7 +46,7 @@ jobs:
       - name: Create database
         working-directory: ./db
         run: |
-            psql -h 127.0.0.1 -p 5432 -u postgres -p postgres test_db < init.sql
+            psql -h 127.0.0.1 -p 5432 -U postgres -W postgres -d test_db -a -f init.sql
       - name: Running tests
         working-directory: ./backend
         run: npm run test
