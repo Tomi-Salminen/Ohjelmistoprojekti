@@ -48,8 +48,8 @@ run-tests:
       run: |
           PGPASSWORD=postgres psql -U postgres -h 127.0.0.1 -p ${{ job.services.postgres.ports[5432] }} -d postgres < init.sql"
     - name: Running tests
-        working-directory: ./backend
-        run: npm run test
-        #env:
+      working-directory: ./backend
+      run: npm run test
+      #env:
         #TODO: Lisää env muuttujat
 
