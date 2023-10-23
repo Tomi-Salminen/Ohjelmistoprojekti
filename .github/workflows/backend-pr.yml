@@ -5,6 +5,7 @@ run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
 on:
   pull_request:
     branches:
+      - backend_branch
       - main
     paths:
       - backend/**
@@ -35,8 +36,8 @@ run-tests:
 
     - name: Install Node.js
       uses: actions/setup-node@v3
-        with:
-          node-version: '14'
+      with:
+        node-version: '20'
     
     - name: Install dependencies
         working-directory: ./backend
