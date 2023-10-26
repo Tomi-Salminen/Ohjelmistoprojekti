@@ -28,7 +28,6 @@ const getPlantsById = async (req, res) => {
     }
   };
 
-
 module.exports = {
     getPlants,
     getPlantsById,
