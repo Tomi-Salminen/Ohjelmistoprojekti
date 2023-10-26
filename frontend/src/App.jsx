@@ -6,6 +6,8 @@ import AboutPage from './pages/AboutPage'
 import ServicesPage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
 import Navbar from './components/Navbar';
+import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage'
 
 export default function App() {
   return (
@@ -19,6 +21,8 @@ export default function App() {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/services" element={<ServicesPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/signup" element={<SignUpPage />} />
               <Route exact path="*" element={<HomePage />} />
             </Routes>
         </div>

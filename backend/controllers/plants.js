@@ -126,7 +126,6 @@ const deletePlant = async (req, res) => {
   } 
 };
 
-
 module.exports = {
     getPlants,
     getPlantsById,

@@ -60,6 +60,22 @@ const accounts = {
         }
       );
     }),
+
+    updateLastLogin: (account) =>
+    new Promise((resolve, reject) => {
+      const query = "UPDATE accounts SET last_login = $1 WHERE user_id = $2";
+      pool.query(
+        query,
+        [account.last_login, account.id],
+        (err, res) => {
+          if (err) {
+            reject(err.message);
+          } else {
+            resolve(res.rows);
+          }
+        }
+      );
+    }),
 };
 
 module.exports = accounts;

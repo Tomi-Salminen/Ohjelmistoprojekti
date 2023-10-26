@@ -62,8 +62,8 @@ const Navbar = () => {
           <Typography
             variant="h4"
             noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+            component={NavLink}
+            to={"/home"}
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -146,7 +146,7 @@ const Navbar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+{/*             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
@@ -172,7 +172,17 @@ const Navbar = () => {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
-            </Menu>
+            </Menu> */}
+            <Button
+                variant='outlined'
+                component={NavLink}
+                to={"/login"}
+                onClick={handleCloseNavMenu}
+                color='secondary'
+                sx={{ display: 'block', color: 'black' }}
+              >
+                Log in
+              </Button>
           </Box>
         </Toolbar>
       </Container>

@@ -1,0 +1,56 @@
+name: Backend-PullRequest
+
+run-name: Pull request to main by @${{ github.actor }}
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - backend/**
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+        postgres:
+          image: postgres
+
+          env:
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_USER: postgres
+            POSTGRES_DB: postgres
+
+          options: >-
+            --health-cmd pg_isready
+            --health-interval 10s
+            --health-timeout 5s
+            --health-retries 5
+          ports:
+            - 5432:5432
+            
+    steps:
+      - name: Fetch code
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      
+      - name: Install dependencies
+        working-directory: ./backend
+        run: npm install
+
+      - name: Create database
+        working-directory: ./db
+        run: |
+            PGPASSWORD=postgres psql -h 127.0.0.1 -p 5432 -U postgres -d postgres -a -f init.sql
+      - name: Running tests
+        working-directory: ./backend
+        run: npm run test
+        env:
+          #TODO: Lisää tämä githubin "secretiksi"
+          JWT_KEY: YOURSECRETKEYGOESHERE
+          #TODO: Lisää env muuttujat
+
