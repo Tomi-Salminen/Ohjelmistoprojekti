@@ -16,3 +16,29 @@ GET http://localhost:3001/api/plants
 
 ###
 GET http://localhost:3001/api/plants/1
+
+###
+POST http://localhost:3001/api/plants
+Content-Type: application/json
+
+{
+  "name": "Palmuvehka",
+  "description": "hieno vehkakasvi",
+  "price": "10.00",
+  "image": "https://www.plantagen.fi/dw/image/v2/BCMR_PRD/on/demandware.static/-/Sites-inriver-catalog/default/dwaa97372b/images/large/521041-4017891192710no.jpg?sh=618&sfrm=jpg"
+}
+
+###
+PUT http://localhost:3001/api/plants/2
+Content-Type: application/json
+
+{
+  "name": "Palmuvehka",
+  "description": "hieno vehkakasvi",
+  "price": "13.00",
+  "image": "https://www.plantagen.fi/dw/image/v2/BCMR_PRD/on/demandware.static/-/Sites-inriver-catalog/default/dwaa97372b/images/large/521041-4017891192710no.jpg?sh=618&sfrm=jpg"
+}
+
+
+### 
+DELETE http://localhost:3001/api/plants/3
