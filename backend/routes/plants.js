@@ -3,10 +3,19 @@ const router = express.Router();
 
 const {
   getPlants,
-  getPlantsById
+  getPlantsById,
+  createPlant,
+  deletePlant,
+  updatePlant,
 } = require("../controllers/plants");
 
 router.get("/", getPlants);
 router.get("/:id", getPlantsById);
+
+//admin token verification??
+
+router.post('/', createPlant);
+router.put('/:id', updatePlant);
+router.delete('/:id', deletePlant);
 
 module.exports = router;
