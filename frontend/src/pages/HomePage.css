@@ -46,6 +46,15 @@
     text-decoration: none;
 }
 
+.hoverAnimation{
+    position: relative;
+    top: 0;
+    transition: top 0.5s
+}
+.hoverAnimation:hover {
+    top: -10px;
+}
+
 .picNavlink {
   position: absolute;
   width: 100%;
