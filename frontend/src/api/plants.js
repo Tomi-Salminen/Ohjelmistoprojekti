@@ -1,6 +1,6 @@
 export const getPlants = async () => {
     const res = await fetch(
-        "http://localhost:3001/api/plants"
+        `${import.meta.env.VITE_API_URL}/api/plants`
     );
     return res.json() // Muistutus: Botha käyttää await ja se ei toimi!!
 };

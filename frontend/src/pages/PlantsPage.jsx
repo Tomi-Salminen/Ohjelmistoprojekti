@@ -3,17 +3,6 @@ import { getPlants } from "../api/plants";
 import { Container } from '@mui/material';
 import PlantsList from "../components/PlantsList";
 
-const DUMMIES = [
-    {
-        "id": 1,
-        "name": "Jukkapalmu"
-    },
-    {
-        "id": 2,
-        "name": "Kukka"
-    }
-]
-
 const PlantsPage = () => {
     const { isLoading, error, data } = useQuery({ queryKey: ['plants'], queryFn: getPlants }
     );
