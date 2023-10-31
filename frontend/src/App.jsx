@@ -8,6 +8,7 @@ import ContactPage from './pages/ContactPage';
 import Navbar from './components/Navbar';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage'
+import PlantsPage from './pages/PlantsPage';
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/services" element={<ServicesPage />} />
+              <Route path="/plants" element={<PlantsPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignUpPage />} />
               <Route exact path="*" element={<HomePage />} />
