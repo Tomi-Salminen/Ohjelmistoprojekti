@@ -4,11 +4,13 @@ import { Grid } from '@mui/material';
 const PlantsList = props => {
 
     return (
-        <Grid container spacing={7} sx={{paddingTop: "20px"}}>
+        <Grid container spacing={3} sx={{paddingTop: "20px"}}>
             {props.plants.map(plant =>
             <Grid 
-                item  
-                xs={3}
+                item
+                md={3}
+                sm={4}  
+                xs={12}
                 key={plant.id}
                 >
                 <PlantsItem
