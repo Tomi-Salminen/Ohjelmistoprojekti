@@ -1,10 +1,21 @@
-
+import { Card, CardMedia, CardActionArea, CardContent,
+         Typography } from '@mui/material';
 
 const PlantsItem = props => {
     return (
-        <div>
-            <p>{props.name}</p>
-        </div>
+        <Card>
+            <CardActionArea>
+                <CardContent>
+                    <CardMedia 
+                        component="img"
+                        height="300"
+                        image={props.image}
+                        />
+                        <Typography variant="h6">{props.name}</Typography>
+                        <Typography>{props.price} €</Typography>
+                </CardContent>
+            </CardActionArea>
+        </Card>
      );
 }
 

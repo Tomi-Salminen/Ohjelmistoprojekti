@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Container } from '@mui/material';
 
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage'
@@ -19,8 +20,7 @@ export default function App() {
       <Router>
         <div className='App'>
           <Navbar />
-          <div className='content'>
-
+          <Container maxWidth="xl" >
               <Routes>
                 <Route path="/" element={< HomePage />} />
                 <Route path="/about" element={<AboutPage />} />
@@ -31,7 +31,7 @@ export default function App() {
                 <Route path="/signup" element={<SignUpPage />} />
                 <Route exact path="*" element={<HomePage />} />
               </Routes>
-          </div>
+            </Container>
         </div>
       </Router>
     </QueryClientProvider>

@@ -5,8 +5,6 @@ import leaves from '../images/leaves.jpg';
 import './HomePage.css';
 import { NavLink } from 'react-router-dom';
 
-
-
 const Home = () => {
     const itemLinkStyle = {
         fontWeight: 'bold',

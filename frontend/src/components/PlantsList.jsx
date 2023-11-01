@@ -1,15 +1,25 @@
 import PlantsItem from './PlantsItem';
+import { Grid } from '@mui/material';
 
 const PlantsList = props => {
+
     return (
-        <div>
+        <Grid container spacing={7} sx={{paddingTop: "20px"}}>
             {props.plants.map(plant =>
+            <Grid 
+                item  
+                xs={3}
+                key={plant.id}
+                >
                 <PlantsItem
-                    name={plant.name}
                     key={plant.id}
+                    name={plant.name}
+                    image={plant.image}
+                    price={plant.price}
                 />
+            </Grid>
             )}
-        </div>
+        </Grid>
      )};
 
 export default PlantsList;
