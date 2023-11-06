@@ -1,12 +1,18 @@
 import { Container, Typography } from '@mui/material';
 import topDownPlants from '../images/topDownPlants.jpeg';
 import plantWatering from '../images/plantWatering.jpeg';
-import leaves from '../images/leaves.jpg'
+import leaves from '../images/leaves.jpg';
 import './HomePage.css';
-
-
+import { NavLink } from 'react-router-dom';
 
 const Home = () => {
+    const itemLinkStyle = {
+        fontWeight: 'bold',
+        "&:hover": {
+            textDecoration: 'underline'
+        }
+    };
+
     return (
         <Container maxWidth="xl" >
             <div id="plantImage">
@@ -26,16 +32,16 @@ const Home = () => {
                 </div>
             </div>
             <div className="itemContainer">
-                <div className="smallerContainer">
-                    <Typography variant="overline" display="block" color="secondary" sx={{fontWeight: 'bold'}}>plants & flowers</Typography>
-                    <img src={topDownPlants} className="smallerPics"></img>
-                </div>
-                <div className="smallerContainer">
-                    <Typography variant="overline" display="block" color="secondary" sx={{fontWeight: 'bold'}}>our services / maintanance</Typography>
+                <NavLink to="/plants" className="smallerContainer hoverAnimation">
+                        <Typography variant="overline" display="block" color="secondary" sx={itemLinkStyle}>plants & flowers</Typography>
+                        <img src={topDownPlants} className="smallerPics"></img>
+                </NavLink>
+                <div className="smallerContainer hoverAnimation">
+                    <Typography variant="overline" display="block" color="secondary" sx={itemLinkStyle}>our services / maintanance</Typography>
                     <img  src={plantWatering} className="smallerPics"></img>
                 </div>
-                <div className="smallerContainer">
-                    <Typography variant="overline" display="block" color="secondary" sx={{fontWeight: 'bold'}}>previous work</Typography>
+                <div className="smallerContainer hoverAnimation">
+                    <Typography variant="overline" display="block" color="secondary" sx={itemLinkStyle}>previous work</Typography>
                     <img src={leaves} className="smallerPics"></img>
                 </div>
             </div>
