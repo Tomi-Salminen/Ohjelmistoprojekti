@@ -28,18 +28,18 @@ const plants = {
   create: (plant) =>
     new Promise((resolve, reject)=> {
       pool.query(
-        "INSERT INTO plants (name, description, price, image) VALUES ($1, $2, $3, $4)",
+        "INSERT INTO plants (name, description, price, image) VALUES ($1, $2, $3, $4) RETURNING id",
         [
           plant.name,
           plant.description,
           plant.price,
           plant.image
         ],
-        (err, res) => {
+        (err, result) => {
           if (err) {
             reject(err);
           } else {
-            resolve(res.rows);
+            resolve(result);
           }
         }
       );

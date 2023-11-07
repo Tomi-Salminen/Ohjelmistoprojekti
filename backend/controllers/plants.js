@@ -54,9 +54,11 @@ const createPlant = async (req, res) => {
 
   try {
     const response = await plants.create(plant);
-    console.log(response);
     if (response) {
-      res.status(201).send(plant);
+      const newPlantId = response.rows[0].id;
+      const plantWithId = { id: newPlantId, ...plant };
+
+      res.status(201).send(plantWithId);
     }
 
   } catch (err) {
