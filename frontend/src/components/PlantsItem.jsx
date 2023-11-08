@@ -2,10 +2,11 @@ import { Card, CardMedia, CardActionArea, CardContent,
          Typography } from '@mui/material';
 
 const PlantsItem = props => {
+    console.log(props.id)
     return (
         <Card>
             <CardActionArea>
-                <CardContent sx={{ textAlign: "center" }}>
+                <CardContent sx={{ textAlign: "center" }} onClick={() => props.changeView(props.id)}>
                     <CardMedia 
                         component="img"
                         height="300"

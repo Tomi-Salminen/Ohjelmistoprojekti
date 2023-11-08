@@ -15,9 +15,11 @@ const PlantsList = props => {
                 >
                 <PlantsItem
                     key={plant.id}
+                    id={plant.id}
                     name={plant.name}
                     image={plant.image}
                     price={plant.price}
+                    changeView={props.changeView}
                 />
             </Grid>
             )}
