@@ -8,7 +8,7 @@ const PlantsList = props => {
             {props.plants.map(plant =>
             <Grid 
                 item
-                md={3}
+                md={4}
                 sm={4}  
                 xs={12}
                 key={plant.id}

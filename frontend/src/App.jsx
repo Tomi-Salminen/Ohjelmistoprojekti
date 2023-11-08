@@ -20,7 +20,7 @@ export default function App() {
       <Router>
         <div className='App'>
           <Navbar />
-          <Container maxWidth="xl" >
+          <Container maxWidth="xl">
               <Routes>
                 <Route path="/" element={< HomePage />} />
                 <Route path="/about" element={<AboutPage />} />
