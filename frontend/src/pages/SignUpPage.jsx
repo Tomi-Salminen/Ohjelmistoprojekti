@@ -1,3 +1,7 @@
+import React, { useContext} from "react";
+import { useMutation } from "react-query";
+import { signUpUser } from "../api/users";
+import { AuthContext } from '../components/auth-context';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -10,10 +14,28 @@ import Container from '@mui/material/Container';
 import { NavLink } from 'react-router-dom';
 
 const SignUpPage = () => {
+  const auth = useContext(AuthContext);
+
+  const signUpUserMutation = useMutation({
+    mutationFn: signUpUser, 
+    onSuccess: (data) => {
+      console.log(data);
+      auth.login(data.id, data.token, data.email);
+    },
+    onError: (error) => {
+      console.log(error);
+    }
+  });
 
         const handleSubmit = (event) => {
             event.preventDefault();
             const data = new FormData(event.currentTarget);
+
+            signUpUserMutation.mutate({
+              username: data.get('firstName'),
+              email: data.get('email'),
+              password: data.get('password')
+            });
             console.log({
               email: data.get('email'),
               password: data.get('password'),
