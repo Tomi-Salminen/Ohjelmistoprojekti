@@ -12,12 +12,13 @@ INSERT INTO accounts(user_id, username, password, email, created_on, last_login)
 VALUES ('admin', 'admin', 'admin', 'admin@admin.com', TIMESTAMP '1999-01-08 04:05:06', TIMESTAMP '1999-01-08 04:05:06');
 
 
-CREATE TABLE IF NOT EXISTS plants (
+CREATE TABLE IF NOT EXISTS product (
   id serial PRIMARY KEY,
   name varchar(60) NOT NULL,
   description varchar(150) NOT NULL,
   price numeric(10, 2) NOT NULL,
   image varchar(200),
+  product_type varchar(85),
   created timestamp NOT NULL DEFAULT current_timestamp,
   updated timestamp NOT NULL DEFAULT current_timestamp
 );
