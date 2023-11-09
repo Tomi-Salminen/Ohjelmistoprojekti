@@ -11,7 +11,7 @@ import Navbar from './components/Navbar';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage'
 import PlantsPage from './pages/PlantsPage';
-import PlantInfo from './components/PlantInfo';
+import PlantInfo from './pages/PlantInfo';
 
 const queryClient = new QueryClient();
 
