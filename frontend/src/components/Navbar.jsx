@@ -15,6 +15,8 @@ import GrassIcon from '@mui/icons-material/Grass';
 import { ThemeProvider } from '@mui/material/styles';
 import { createTheme } from '@mui/material/styles';
 import { NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from './auth-context';
 
 const pages = ['home', 'about', 'services', 'contact'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -35,6 +37,7 @@ const NavTheme = createTheme({
 });
 
 const Navbar = () => {
+  const auth = useContext(AuthContext);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -173,7 +176,8 @@ const Navbar = () => {
                 </MenuItem>
               ))}
             </Menu> */}
-            <Button
+                {!auth.isLoggedIn && (
+                <Button
                 variant='outlined'
                 component={NavLink}
                 to={"/login"}
@@ -183,6 +187,20 @@ const Navbar = () => {
               >
                 Log in
               </Button>
+                )}
+                {auth.isLoggedIn && (
+                  <Button 
+                  variant='outlined'
+                  component={NavLink}
+                  to={"/home"}
+                  onClick={auth.logout}
+                  color='secondary'
+                  sx={{ display: 'block', color: 'black' }}
+                  >
+                    Log out
+                  </Button>
+                  
+                )}
           </Box>
         </Toolbar>
       </Container>

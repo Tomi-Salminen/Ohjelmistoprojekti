@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from 'react-query';
 import { getPlants } from "../api/plants";
 import PlantsList from "../components/PlantsList";
 

@@ -41,9 +41,19 @@ const signUpUser = async (req, res) => {
       return res.status(500).send("Could not account user, try again please");
     }
 
+    const token = jwt.sign(
+      {
+          id: newUser.user_id,
+          email: newUser.email
+      },
+      process.env.JWT_KEY,
+      { expiresIn: '1h'}
+  )
+
     res.status(201).json({
       id: newUser.user_id,
       email: newUser.email,
+      token
     });
   } catch (err) {
     console.log(err);
