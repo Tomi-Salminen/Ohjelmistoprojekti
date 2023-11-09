@@ -1,3 +1,7 @@
+import React, { useContext} from "react";
+import { useMutation } from "react-query";
+import { loginUser } from "../api/users";
+import { AuthContext } from '../components/auth-context';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,10 +16,28 @@ import Container from '@mui/material/Container';
 import { NavLink } from 'react-router-dom';
 
 const LoginPage = () => {
+  const auth = useContext(AuthContext);
+
+  const loginUserMutation = useMutation({
+    mutationFn: loginUser, 
+    onSuccess: (data) => {
+      console.log(data);
+      auth.login(data.id, data.token, data.email);
+    },
+    onError: (error) => {
+      console.log(error);
+    }
+  });
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
+        
+        loginUserMutation.mutate({
+          email: data.get('email'),
+          password: data.get('password')
+        });
+        
         console.log({
         email: data.get('email'),
         password: data.get('password'),
@@ -66,7 +88,7 @@ const LoginPage = () => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              Log In
             </Button>
             <Grid container justifyContent="center">
               <Grid item>

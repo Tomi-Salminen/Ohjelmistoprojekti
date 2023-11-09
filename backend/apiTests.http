@@ -24,3 +24,12 @@ content-type: application/json
     "password": "asda2312L;;:sAa"
 }
 ###
+POST http://localhost:3001/api/plants HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Jukkapalmu",
+    "description": "Kiva palmukasvi",
+    "price": "30",
+    "image": "https://www.viherpeukalot.fi/images/products/12355-2_orig.jpg"
+}
