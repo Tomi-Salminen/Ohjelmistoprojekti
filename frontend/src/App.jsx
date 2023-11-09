@@ -11,6 +11,7 @@ import Navbar from './components/Navbar';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage'
 import PlantsPage from './pages/PlantsPage';
+import PlantInfo from './components/PlantInfo';
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ export default function App() {
                 <Route path="/plants" element={<PlantsPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignUpPage />} />
+                <Route path="/plants/plantinfo/:id" element={<PlantInfo />}/>
                 <Route exact path="*" element={<HomePage />} />
               </Routes>
             </Container>

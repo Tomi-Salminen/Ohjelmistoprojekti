@@ -1,25 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import { getPlants } from "../api/plants";
 import PlantsList from "../components/PlantsList";
-import PlantInfo from '../components/PlantInfo';
 import { Typography } from '@mui/material';
-import { useState } from 'react';
 
 const PlantsPage = () => {
-    const { isLoading, error, data } = useQuery({ queryKey: ['plants'], queryFn: getPlants }
+    const { isLoading, error, data } = useQuery({ queryKey: ['plantsInfo'], queryFn: getPlants }
     );
-    const [plantId, setPlantId] = useState("plantsList");
-    const changeView = (plantId) => {
-        setPlantId(plantId);
-    }
-    let content = <PlantsList plants={data} changeView={changeView}/>;
-
-    if (plantId === "plantsList"){
-        content = <PlantsList plants={data} changeView={changeView}/>
-    } else {
-        console.log(data);
-        content = <PlantInfo plantData={data[plantId]}/>
-    }
 
     if (isLoading) return (
           "Loading..."
@@ -29,8 +15,8 @@ const PlantsPage = () => {
 
     return (
         <div style={{ paddingTop: "20px"}}>
-            <Typography variant='button' sx={{ color: '#183c25', fontSize: '2em'}}>PLANTS & FLOWERS</Typography>
-            {content}
+            <Typography variant='button' sx={{ color: '#183c25', fontSize: '2em', letterSpacing: "2px"}}>PLANTS & FLOWERS</Typography>
+            <PlantsList plants={data} />
         </div>
      );
 };

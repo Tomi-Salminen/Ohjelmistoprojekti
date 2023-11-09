@@ -9,7 +9,7 @@ const PlantsList = props => {
             <Grid 
                 item
                 md={4}
-                sm={4}  
+                sm={6}  
                 xs={12}
                 key={plant.id}
                 >
@@ -19,7 +19,6 @@ const PlantsList = props => {
                     name={plant.name}
                     image={plant.image}
                     price={plant.price}
-                    changeView={props.changeView}
                 />
             </Grid>
             )}
