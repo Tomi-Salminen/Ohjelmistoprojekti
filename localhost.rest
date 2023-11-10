@@ -60,4 +60,9 @@ Content-Type: application/json
   "order": [{"plant_id": 1, "quantity": 2}]
 }
 ###
+GET http://localhost:3001/api/orders/{{uid}}
+Authorization: BEARER {{authToken}}
+
+###
 @authToken = {{login.response.body.token}}
+@uid = {{login.response.body.id}}
