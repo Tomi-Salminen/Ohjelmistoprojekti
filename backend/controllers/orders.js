@@ -11,11 +11,10 @@ const createOrder = async (req, res) => {
   try {
     const response = await orders.createOrder(userId, order);
     if (!response) {
-        res.status(400).send("Could not make an order");
+      res.status(400).send("Could not make an order");
     }
 
     res.status(201).send("Offer succesfully created");
-
   } catch (err) {
     res.status(500).send("Something went wrong");
   }
@@ -29,7 +28,7 @@ const getOrdersByUserId = async (req, res) => {
     console.log(userId + "  " + givenUid);
     res.status(401).send("Unauthorized");
   }
-  
+
   try {
     const response = await orders.findOrdersByUid(userId);
     console.log(response);
@@ -44,9 +43,7 @@ const getOrdersByUserId = async (req, res) => {
   }
 };
 
-
 module.exports = {
-    createOrder,
-    getOrdersByUserId
-}
-  
+  createOrder,
+  getOrdersByUserId,
+};
