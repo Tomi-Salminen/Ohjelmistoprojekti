@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { getPlants } from "../api/plants";
 import PlantsList from "../components/PlantsList";
 import { Typography } from '@mui/material';

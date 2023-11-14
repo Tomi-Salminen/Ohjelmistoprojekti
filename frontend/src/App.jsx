@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState, useCallback, useEffect } from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthContext } from './components/auth-context';
 import { Container } from '@mui/material';
 
