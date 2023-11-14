@@ -36,6 +36,16 @@ const NavTheme = createTheme({
   },
 });
 
+const styles = {
+  buttonStyle: {
+    "&.active": {
+      color: "#9e7555"
+    },
+    display: 'block',
+    color: 'black'
+  }
+}
+
 const Navbar = () => {
   const auth = useContext(AuthContext);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -110,7 +120,7 @@ const Navbar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu} component={NavLink} to={"/" + page}>
+                <MenuItem key={page} onClick={handleCloseNavMenu} component={NavLink} to={"/" + page} sx={styles.buttonStyle}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -141,7 +151,7 @@ const Navbar = () => {
                 component={NavLink}
                 to={"/" + page}
                 onClick={handleCloseNavMenu}
-                sx={{ display: 'block', color: 'black' }}
+                sx={styles.buttonStyle}
               >
                 {page}
               </Button>
@@ -183,7 +193,7 @@ const Navbar = () => {
                 to={"/login"}
                 onClick={handleCloseNavMenu}
                 color='secondary'
-                sx={{ display: 'block', color: 'black' }}
+                sx={styles.buttonStyle}
               >
                 Log in
               </Button>
@@ -195,7 +205,7 @@ const Navbar = () => {
                   to={"/home"}
                   onClick={auth.logout}
                   color='secondary'
-                  sx={{ display: 'block', color: 'black' }}
+                  sx={styles.buttonStyle}
                   >
                     Log out
                   </Button>
