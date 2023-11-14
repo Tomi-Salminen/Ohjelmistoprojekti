@@ -15,15 +15,45 @@ VALUES ('admin', 'admin', 'admin', 'admin@admin.com', TIMESTAMP '1999-01-08 04:0
 CREATE TABLE IF NOT EXISTS plants (
   id serial PRIMARY KEY,
   name varchar(60) NOT NULL,
-  description varchar(150) NOT NULL,
+  description varchar(5000) NOT NULL,
   price numeric(10, 2) NOT NULL,
   image varchar(5000),
   created timestamp NOT NULL DEFAULT current_timestamp,
   updated timestamp NOT NULL DEFAULT current_timestamp
 );
 INSERT INTO plants (name, description, price, image)
-VALUES ('Peikonlehti', 'hieno kasvi', 15.00, 'https://www.kukkatalo.fi/wp-content/uploads/2018/02/Trendik%C3%A4s-peikonlehti-on-suosittu-viherkasvi.jpg'),
-('Jukkapalmu', 'hieno kasvi', 39.99, 'https://www.viherpeukalot.fi/images/products/12355-2_orig.jpg'),
-('Lyyranviikuna', 'hieno kasvi', 69.99, 'https://www.kukkatalo.fi/wp-content/uploads/2019/09/Ficus-Lyrata-00000129.jpg'),
-('Kultapalmu', 'hieno kasvi', 39.99, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.ikea.com%2Ffi%2Ffi%2Fimages%2Fproducts%2Fdypsis-lutescens-ruukkukasvi-kultapalmu__0653973_pe708202_s5.jpg&f=1&nofb=1&ipt=d486c46166beb0bddf6a2a1835687f0104397101c08a7346276c48ae49e0e9b1&ipo=images'),
-('Kiiltojukka', 'hieno kasvi', 49.99, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.omakoti.fi%2Fwp-content%2Fuploads%2F2015%2F06%2Fjukkapalmu-kiiltojukka.jpg&f=1&nofb=1&ipt=5e1ba1d3c935f7f2ae6eb9cc1be1147362139a59f00d39d7efeb53bca3317ea0&ipo=images');
+VALUES ('aloe vera', 'Aloe vera is a popular indoor plant known for its
+medicinal properties and easy maintenance. Its thick,
+succulent leaves store water, making it highly drought-
+resistant. Aloe vera''s gel has soothing and healing
+properties, often used to treat minor skin irritations
+and sunburn. This plant thrives in indirect sunlight and
+can purify indoor air by removing toxins. Its compact
+size and minimal care requirements make it an ideal
+choice for indoor environments.', 15.00, 'https://images.pexels.com/photos/7838200/pexels-photo-7838200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+('peace lily', 'The peace lily is a favored indoor plant for its elegance and
+air-purifying qualities. With its attractive white blooms and
+lush green leaves, it adds a touch of beauty to indoor
+spaces. Peace lilies are efficient at removing indoor
+pollutants, promoting better air quality. They thrive in low
+light conditions and are relatively low-maintenance, making
+them suitable for various indoor settings. Peace lilies can
+also alert you to underwatering, as they droop when in
+need of water, but quickly perk up after a good drink. Their
+combination of aesthetics and air-purifying abilities makes
+them an excellent choice for indoor gardening.', 39.99, 'https://www.mydomaine.com/thmb/N3StDx3PyGbF0Pwafv-P9-qiNZU=/900x0/filters:no_upscale():strip_icc()/1566417254329_20190821-1566417255317-b9314f1d9f7a4668a466c5ffb1913a8f.jpg'),
+('spider plant',
+'The spider plant is a popular indoor choice due to its
+simplicity and air-purifying attributes. Its long, arching
+leaves with white stripes add an appealing visual element
+to indoor spaces. Spider plants are effective at filtering
+indoor air by removing pollutants like formaldehyde and
+xylene. They are adaptable to various light conditions and
+require minimal care, making them suitable for beginners.
+The plant also produces offshoots or "siderites" that can
+be easily propagated, allowing for multiple plants from
+one purchase. Spider plants combine aesthetics with air-
+cleaning capabilities, making them a top pick for indoor
+gardening.',
+69.99,
+'https://www.thespruce.com/thmb/UjlXNIgQM-WV4ivm-0nveevtPwc=/3000x0/filters:no_upscale():max_bytes(150000):strip_icc()/spider-plants-chlorophytum-definition-1902773-01b-b3f60dce30a64c399d52b5538417cc7d.jpg');
