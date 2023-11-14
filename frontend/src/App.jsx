@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState, useCallback, useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -80,26 +79,26 @@ export default function App() {
       logout: logout
     }}>
 
-    <QueryClientProvider client={queryClient}>
-      <Router>
-        <div className='App'>
-          <Navbar />
-          <Container maxWidth="xl">
-              <Routes>
-                <Route path="/" element={< HomePage />} />
-                <Route path="/about" element={<AboutPage />} />
-                <Route path="/contact" element={<ContactPage />} />
-                <Route path="/services" element={<ServicesPage />} />
-                <Route path="/plants" element={<PlantsPage />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/signup" element={<SignUpPage />} />
-                <Route path="/plants/plantinfo/:id" element={<PlantInfo />}/>
-                <Route exact path="*" element={<HomePage />} />
-              </Routes>
-            </Container>
-        </div>
-      </Router>
-    </QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <div className='App'>
+            <Navbar />
+            <Container maxWidth="xl">
+                <Routes>
+                  <Route path="/" element={< HomePage />} />
+                  <Route path="/about" element={<AboutPage />} />
+                  <Route path="/contact" element={<ContactPage />} />
+                  <Route path="/services" element={<ServicesPage />} />
+                  <Route path="/plants" element={<PlantsPage />} />
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/signup" element={<SignUpPage />} />
+                  <Route path="/plants/plantinfo/:id" element={<PlantInfo />}/>
+                  <Route exact path="*" element={<HomePage />} />
+                </Routes>
+              </Container>
+          </div>
+        </Router>
+      </QueryClientProvider>
     </AuthContext.Provider>
   );
 }
