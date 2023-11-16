@@ -40,10 +40,10 @@ const Home = () => {
                     <Typography variant="overline" display="block" color="secondary" sx={itemLinkStyle}>our services / maintanance</Typography>
                     <img  src={plantWatering} className="smallerPics"></img>
                 </NavLink>
-                <div className="smallerContainer hoverAnimation">
+                <NavLink to="/previouswork" className="smallerContainer hoverAnimation">
                     <Typography variant="overline" display="block" color="secondary" sx={itemLinkStyle}>previous work</Typography>
                     <img src={leaves} className="smallerPics"></img>
-                </div>
+                </NavLink>
             </div>
         </Container>
      );

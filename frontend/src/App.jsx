@@ -13,6 +13,7 @@ import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage'
 import PlantsPage from './pages/PlantsPage';
 import PlantInfo from './pages/PlantInfo';
+import PreviousWorkPage from './pages/PreviousWorkPage';
 
 const queryClient = new QueryClient();
 let logoutTimer; 
@@ -90,6 +91,7 @@ export default function App() {
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="/services" element={<ServicesPage />} />
                   <Route path="/plants" element={<PlantsPage />} />
+                  <Route path="/previouswork" element={<PreviousWorkPage />} />
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/signup" element={<SignUpPage />} />
                   <Route path="/plants/plantinfo/:id" element={<PlantInfo />}/>
