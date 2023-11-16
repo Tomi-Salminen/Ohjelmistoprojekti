@@ -1,5 +1,5 @@
 import React, { useContext} from "react";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import { signUpUser } from "../api/users";
 import { AuthContext } from '../components/auth-context';
 import Avatar from '@mui/material/Avatar';
