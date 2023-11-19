@@ -1,11 +1,11 @@
 import { Grid, Box, Typography, Stack } from '@mui/material';
-import testImg from '../images/leaves.jpg'
+import aboutUsImg from '../images/aboutUs.jpg';
 
 const AboutPage = () => {
     return (
         <div style={{paddingTop: "40px"}}>
             <Grid container spacing={8}>
-                <Grid item xs={12} sm={6}>
+                <Grid item sm={12} lg={7}>
                         <Typography variant="button"
                                     sx={{color: '#183c25', textTransform: "uppercase", fontSize: "24px", letterSpacing: "2px", paddintTop: "-10px", display: "flex", justifyContent: "center"}}>
                             ABOUT US
@@ -27,7 +27,7 @@ const AboutPage = () => {
                             greener and brighter.
                         </Typography>
                 </Grid>
-                <Grid item xs={12} sm={5}>
+                <Grid item sm={12} lg={5}>
                     <Box component="img"
                                 sx={{
                                     width: "100%",
@@ -35,7 +35,7 @@ const AboutPage = () => {
                                     aspectRatio: 3.3/3,
                                     objectPosition: "50% 80%"
                                 }}
-                                src={testImg} />
+                                src={aboutUsImg} />
                 </Grid>
             </Grid>
         </div>
