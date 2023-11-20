@@ -1,5 +1,4 @@
 const pool = require('../db/pool');
-
 const plants = {
   findAll: () =>
     new Promise((resolve, reject) => {

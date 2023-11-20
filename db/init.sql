@@ -1,10 +1,10 @@
 
 CREATE TABLE IF NOT EXISTS accounts (
-  user_id varchar(36) UNIQUE NOT NULL,
+  user_id varchar(36) UNIQUE NOT NULL PRIMARY KEY,
   username VARCHAR(50) UNIQUE NOT NULL,
   password VARCHAR(60) NOT NULL,
   email VARCHAR(255) UNIQUE NOT NULL,
-  created_on TIMESTAMP NOT NULL,
+  created_on TIMESTAMP NOT NULL DEFAULT current_timestamp,
   last_login TIMESTAMP
 );
 
@@ -57,3 +57,22 @@ cleaning capabilities, making them a top pick for indoor
 gardening.',
 69.99,
 'https://www.thespruce.com/thmb/UjlXNIgQM-WV4ivm-0nveevtPwc=/3000x0/filters:no_upscale():max_bytes(150000):strip_icc()/spider-plants-chlorophytum-definition-1902773-01b-b3f60dce30a64c399d52b5538417cc7d.jpg');
+
+-- Toimii myös relaationa käyttäjän ja kasvien välillä
+CREATE TABLE IF NOT EXISTS orders (
+  order_id serial PRIMARY KEY,
+  user_id varchar(36) REFERENCES accounts (user_id) ON DELETE CASCADE,
+  created timestamp NOT NULL DEFAULT current_timestamp
+);
+INSERT INTO orders (user_id)
+VALUES ('admin');
+
+CREATE TABLE order_details (
+  order_detail_id SERIAL PRIMARY KEY,
+  order_id INT REFERENCES orders(order_id) ON DELETE CASCADE,
+  plant_id INT REFERENCES plants(id) ON DELETE CASCADE,
+  quantity INT NOT NULL
+);
+
+INSERT INTO order_details (order_id, plant_id, quantity)
+VALUES (1, 1, 2);
