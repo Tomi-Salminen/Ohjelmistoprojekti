@@ -28,6 +28,7 @@ GET http://localhost:3001/api/plants/1
 ###
 POST http://localhost:3001/api/plants
 Content-Type: application/json
+Authorization: BEARER {{authToken}}
 
 {
   "name": "Palmuvehka",
@@ -39,6 +40,7 @@ Content-Type: application/json
 ###
 PUT http://localhost:3001/api/plants/2
 Content-Type: application/json
+Authorization: BEARER {{authToken}}
 
 {
   "name": "Palmuvehka",
@@ -50,6 +52,7 @@ Content-Type: application/json
 
 ### 
 DELETE http://localhost:3001/api/plants/3
+Authorization: BEARER {{authToken}}
 
 ###
 POST http://localhost:3001/api/orders
