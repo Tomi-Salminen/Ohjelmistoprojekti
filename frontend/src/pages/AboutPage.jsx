@@ -1,4 +1,4 @@
-import { Grid, Box, Typography, Stack } from '@mui/material';
+import { Grid, Box, Typography } from '@mui/material';
 import aboutUsImg from '../images/aboutUs.jpg';
 
 const AboutPage = () => {
