@@ -1,19 +1,48 @@
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import { Typography } from '@mui/material';
-import { getPlants } from "../api/plants";
-import { useQuery } from '@tanstack/react-query';
-import { useParams } from 'react-router-dom';
+import React from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useQuery, useMutation } from '@tanstack/react-query';
+import { Typography, Grid, Box, Button } from '@mui/material';
+import { getPlants, deletePlant } from '../api/plants';
+import { AuthContext } from '../components/auth-context';
+import { useContext } from 'react';
 
 const PlantInfo = () => {
     const { id } = useParams();
-    const { isLoading, error, data } = useQuery({ queryKey: ['plants'], queryFn: getPlants }
-    );
+    const auth = useContext(AuthContext);
+    const plantId = Number(id);
+    const navigate = useNavigate();
+    
+    const deletePlantMutation = useMutation({
+        mutationFn: deletePlant        
+      })
+
+    const deletePlantHandler= () => {
+        try {
+            deletePlantMutation.mutate({
+                id: plantId,
+                token: auth.token
+            })
+            console.log("plant deleted");
+            navigate(-1);
+        } catch (error) {
+        console.log("Error deleting plant:", error);
+        }
+    }    
+    
+    const { isLoading, error, data } = useQuery({ queryKey: ['plants'], queryFn: getPlants });    
 
     if (isLoading) return (
         "Loading..."
     );
     if (error) return "An error has occurred: " + error.message;
+
+    // Find the plant in the data array based on the property ID
+    const selectedPlant = data.find(plant => plant.id === plantId);
+
+    if (!selectedPlant) {
+        return <div>Error: Plant not found</div>;
+    }
+
 
     return (
         <div style={{ paddingTop: "20px"}}>
@@ -27,17 +56,23 @@ const PlantInfo = () => {
                             aspectRatio: 3.3/3,
                             objectPosition: "50% 80%"
                         }}
-                        src={data[id].image} />
+                        src={selectedPlant.image} />
                 </Grid>
                 <Grid item xs={7} sx={{ padding: "0px" }}>
                     <Typography variant="button"
-                                sx={{color: '#183c25', textTransform: "uppercase", fontSize: "24px", letterSpacing: "2px", paddintTop: "-10px"}}>
-                        {data[id].name}
+                                sx={{color: '#183c25', textTransform: "uppercase", fontSize: "24px", letterSpacing: "2px", paddingTop: "-10px"}}>
+                        {selectedPlant.name}
                     </Typography>
                     <Typography sx={{fontSize: "20px", mt: 1}}>
-                        {data[id].description}
+                        {selectedPlant.description}
                     </Typography>
-                </Grid>
+                    {auth.userEmail === 'admin@gmail.com' && (
+                    <Button onClick={deletePlantHandler} variant="contained" color="primary">
+                        DELETE
+                    </Button>
+                    )}
+                </Grid>     
+                
             </Grid>
         </div>
     )
