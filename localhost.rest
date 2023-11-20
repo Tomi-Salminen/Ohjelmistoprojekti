@@ -10,7 +10,15 @@ Content-Type: application/json
   "password": "peterparker"
 }
 
+###
+# @name login
+POST http://localhost:3001/api/accounts/login
+Content-Type: application/json
 
+{
+  "email": "peter@parker.com",
+  "password": "peterparker"
+}
 ###
 GET http://localhost:3001/api/plants
 
@@ -42,3 +50,19 @@ Content-Type: application/json
 
 ### 
 DELETE http://localhost:3001/api/plants/3
+
+###
+POST http://localhost:3001/api/orders
+Authorization: BEARER {{authToken}}
+Content-Type: application/json
+
+{
+  "order": [{"plant_id": 1, "quantity": 2}]
+}
+###
+GET http://localhost:3001/api/orders/{{uid}}
+Authorization: BEARER {{authToken}}
+
+###
+@authToken = {{login.response.body.token}}
+@uid = {{login.response.body.id}}

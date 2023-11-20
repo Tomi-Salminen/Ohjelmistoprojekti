@@ -63,7 +63,6 @@ const signUpUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
-
   let identifiedUser;
   try {
     const result = await accounts.findByEmail(email);
