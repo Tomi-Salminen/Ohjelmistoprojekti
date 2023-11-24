@@ -15,6 +15,7 @@ import SignUpPage from './pages/SignUpPage';
 import PlantsPage from './pages/PlantsPage';
 import PlantInfo from './pages/PlantInfo';
 import PreviousWorkPage from './pages/PreviousWorkPage';
+import AdminPage from './pages/AdminPage';
 
 const queryClient = new QueryClient();
 let logoutTimer;
@@ -101,19 +102,22 @@ export default function App() {
           <div className='App'>
             <Navbar />
             <Container maxWidth="xl">
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/about" element={<AboutPage />} />
-                <Route path="/contact" element={<ContactPage />} />
-                <Route path="/services" element={<ServicesPage />} />
-                <Route path="/plants" element={<PlantsPage />} />
-                <Route path="/previouswork" element={<PreviousWorkPage />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/signup" element={<SignUpPage />} />
-                <Route path="/plants/plantinfo/:id" element={<PlantInfo />} />
-                <Route exact path="*" element={<HomePage />} />
-              </Routes>
-            </Container>
+                <Routes>
+                  <Route path="/" element={< HomePage />} />
+                  <Route path="/about" element={<AboutPage />} />
+                  <Route path="/contact" element={<ContactPage />} />
+                  <Route path="/services" element={<ServicesPage />} />
+                  <Route path="/plants" element={<PlantsPage />} />
+                  <Route path="/previouswork" element={<PreviousWorkPage />} />
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/signup" element={<SignUpPage />} />
+                  <Route path="/plants/:id" element={<PlantInfo />}/>
+                  {userEmail == "admin@gmail.com" &&(
+                  <Route path="/admin" element={<AdminPage />} />
+                  )}
+                  <Route exact path="*" element={<HomePage />} />
+                </Routes>
+              </Container>
           </div>
         </Router>
       </QueryClientProvider>

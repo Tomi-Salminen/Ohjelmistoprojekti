@@ -20,6 +20,7 @@ import { AuthContext } from './auth-context';
 
 const pages = ['home', 'about', 'services', 'contact'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const adminEmail = 'admin@gmail.com';
 
 const NavTheme = createTheme({
   palette: {
@@ -156,6 +157,18 @@ const Navbar = () => {
                 {page}
               </Button>
             ))}
+            {auth.isLoggedIn && auth.userEmail == adminEmail &&(
+                  <Button 
+                  variant='outlined'
+                  component={NavLink}
+                  to={"/admin"}
+                  onClick={handleCloseNavMenu}
+                  sx={styles.buttonStyle}
+                  >
+                    Admin
+                  </Button>
+                  
+                )}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

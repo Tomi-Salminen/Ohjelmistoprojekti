@@ -13,7 +13,7 @@ const {
 router.get("/", getPlants);
 router.get("/:id", getPlantsById);
 
-//admin token verification??
+router.use(verifyToken);
 
 router.post('/', createPlant);
 router.put('/:id', updatePlant);
