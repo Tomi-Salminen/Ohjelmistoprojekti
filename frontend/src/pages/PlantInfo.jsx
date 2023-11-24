@@ -20,6 +20,7 @@ const PlantInfo = () => {
             <Typography variant='button' sx={{ color: '#183c25', fontSize: '2em', letterSpacing: "2px"}}>PLANTS & FLOWERS</Typography>
             <Grid container spacing={2} sx={{mt: 1}}>
                 <Grid item xss={12} md={7}>
+
                     <Box component="img"
                         sx={{
                             width: "100%",
@@ -29,7 +30,9 @@ const PlantInfo = () => {
                         }}
                         src={data[id].image} />
                 </Grid>
+
                 <Grid item xss={12} md={5} sx={{ padding: "0px" }}>
+
                     <Typography variant="button"
                                 sx={{color: '#183c25', textTransform: "uppercase", fontSize: "24px", letterSpacing: "2px", paddintTop: "-10px"}}>
                         {data[id].name}

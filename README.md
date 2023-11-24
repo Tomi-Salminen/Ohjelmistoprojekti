@@ -16,6 +16,19 @@ In backend folder:
     npm run dev
 ```
 
+## Adding admin user
+in backend folder:
+```
+    cd scripts
+    node add_admin_to_db.js
+```
+
+## Running backend tests
+in backend folder:
+```
+    npm run test
+```
+
 ## Frontend
 Create .env file in frontend folder:
 ```
