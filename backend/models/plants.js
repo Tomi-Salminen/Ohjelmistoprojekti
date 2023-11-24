@@ -1,5 +1,8 @@
 const pool = require('../db/pool');
+
+// Object representing CRUD operations for the 'plants' table
 const plants = {
+  // retrieve all plants from the database
   findAll: () =>
     new Promise((resolve, reject) => {
       pool.query("SELECT * from plants", (err, res) => {
@@ -10,6 +13,8 @@ const plants = {
         }
       });
     }),
+
+  // retrieve a specific plant by ID from the database
   findPlantsById: (id) =>
     new Promise((resolve, reject) => {
       pool.query(
@@ -24,8 +29,10 @@ const plants = {
         }
       );
     }),
+
+  // create a new plant in the database
   create: (plant) =>
-    new Promise((resolve, reject)=> {
+    new Promise((resolve, reject) => {
       pool.query(
         "INSERT INTO plants (name, description, price, image) VALUES ($1, $2, $3, $4) RETURNING id",
         [
@@ -43,6 +50,8 @@ const plants = {
         }
       );
     }),
+
+  // update an existing plant in the database by ID
   updateById: (plant) =>
     new Promise((resolve, reject) => {
       pool.query(
@@ -63,20 +72,22 @@ const plants = {
         }
       );
     }),
+
+  // delete a plant from the database by ID
   deleteById: (id) => 
     new Promise((resolve, reject) => {
       pool.query(
         "DELETE FROM plants WHERE id = $1",
         [id],
-      (err, res) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(res.rows);
+        (err, res) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(res.rows);
+          }
         }
-      }
-    );
-  }),
+      );
+    }),
 };
 
 module.exports = plants;
