@@ -14,6 +14,9 @@ export const signUpUser = async ({username, email, password}) => {
         })
       }
     );
+    if (!res.ok) {
+      throw new Error(res.status);
+    }
     return await res.json();
   }
 
