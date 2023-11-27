@@ -4,6 +4,7 @@ import {
   Grid, Paper, Typography
 } from '@mui/material';
 import GrassIcon from '@mui/icons-material/Grass';
+import { Link } from 'react-router-dom';
 
 const placeholderServicePackages = [
   {
@@ -181,6 +182,7 @@ const ServicesPage = () => {
       >
         Pricing
       </Typography>
+      {/* Pricing */}
       <Container maxWidth="md" component="main">
         <Grid container spacing={5} alignItems="flex-end">
           {placeholderServicePackages.map((service) => (
@@ -231,7 +233,8 @@ const ServicesPage = () => {
                 </CardContent>
                 <CardActions>
                   <Button fullWidth variant={service.buttonVariant}>
-                    {service.buttonText}
+                    {/* Button takes you to the Sign up -page */}
+                    <Link to="/signUp">{service.buttonText}</Link>
                   </Button>
                 </CardActions>
               </Card>
@@ -239,6 +242,7 @@ const ServicesPage = () => {
           ))}
         </Grid>
       </Container>
+      {/* Frequently asked questions */}
       <Typography 
         sx={{
           letterSpacing: '.3rem',
