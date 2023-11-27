@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { loginUser } from "../api/users";
 import { AuthContext } from "../components/auth-context";
@@ -13,16 +13,16 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const auth = useContext(AuthContext);
   const [errorText, setErrorText] = useState("");
+  const navigate = useNavigate();
 
   const loginUserMutation = useMutation({
     mutationFn: loginUser,
     onSuccess: (data) => {
-      console.log(data);
       auth.login(data.id, data.token, data.email);
     },
     onError: (error) => {
@@ -33,17 +33,15 @@ const LoginPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     setErrorText("");
     const data = new FormData(event.currentTarget);
     loginUserMutation.mutate({
       email: data.get("email"),
       password: data.get("password"),
     });
-
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    
+    navigate("/");
   };
 
   return (
