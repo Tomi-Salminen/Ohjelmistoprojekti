@@ -1,42 +1,50 @@
+// retrieve a list of plants from the server
 export const getPlants = async () => {
-    const res = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/plants`
-    );
-    return res.json() // Muistutus: Botha käyttää await ja se ei toimi!!
+  // Making a GET request to the plants API endpoint
+  const res = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/plants`
+  );
+  return res.json();
 };
 
-export const createPlant = async ({name, description, price, image, token}) => {
-    const res = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/plants`, 
+// create a new plant on the server
+export const createPlant = async ({ name, description, price, image, token }) => {
+  // Making a POST request to the plants API endpoint with user authorization
+  const res = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/plants`,
       {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer ' + token
-        },
-        body: JSON.stringify({
-          name,
-          description,
-          price,
-          image
-        })
+          method: 'POST',
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              // Attaching the user's token for authorization
+              Authorization: 'Bearer ' + token
+          },
+          // Sending plant creation data in the request body
+          body: JSON.stringify({
+              name,
+              description,
+              price,
+              image
+          })
       }
-    );
-    return await res.json();
-  };
+  );
+  return await res.json();
+};
 
-  export const deletePlant= async ({id, token}) => {
-    const res = await fetch(
+// delete a plant from the server
+export const deletePlant = async ({ id, token }) => {
+  // Making a DELETE request to the specific plant's API endpoint with user authorization
+  const res = await fetch(
       `${import.meta.env.VITE_API_URL}/api/plants/${id}`,
       {
-        method: 'DELETE',
-        headers: {
-          Authorization: 'Bearer ' + token
-        }
+          method: 'DELETE',
+          headers: {
+              // Attaching the user's token for authorization
+              Authorization: 'Bearer ' + token
+          }
       }
-    );
-    
-    return await res.json();
-  };
-  
+  );
+
+  return await res.json();
+};
