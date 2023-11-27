@@ -53,4 +53,7 @@ jobs:
           #TODO: Lisää tämä githubin "secretiksi"
           JWT_KEY: YOURSECRETKEYGOESHERE
           #TODO: Lisää env muuttujat
+          
+      - name: Trigger Deploy on Render
+        run: curl -X GET https://api.render.com/deploy/srv-clicdkvjc5ks73es9v1g?key=WFTbShhfk3M
 
