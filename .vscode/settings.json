@@ -9,6 +9,19 @@
             "database": "postgres",
             "username": "postgres",
             "password": "postgres"
+        },
+        {
+            "pgOptions": {
+                "ssl": true
+            },
+            "previewLimit": 50,
+            "server": "postgres://kayttaja:CKlhYvhukTmuY2lCUubcM2tCd6KqUpQe@dpg-clis05km411s73dtfe0g-a.frankfurt-postgres.render.com/kasvi_db",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "kasvi",
+            "database": "kasvi_db",
+            "username": "kayttaja",
+            "password": "CKlhYvhukTmuY2lCUubcM2tCd6KqUpQe"
         }
     ]
 }

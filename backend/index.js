@@ -7,8 +7,6 @@ require("dotenv").config();
 
 const cors = require("cors");
 
-//const PORT = process.env.PORT || 3001;
-
 const app = express();
 
 // Cors asetukset
@@ -23,6 +21,5 @@ app.use(bodyParser.json());
 app.use("/api/accounts", accountRoutes);
 app.use("/api/plants", plantsRoutes);
 app.use("/api/orders", ordersRoutes);
-//app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
 module.exports = app;
