@@ -52,5 +52,9 @@ jobs:
         env:
           #TODO: Lisää tämä githubin "secretiksi"
           JWT_KEY: YOURSECRETKEYGOESHERE
-          #TODO: Lisää env muuttujat
+          POSTGRESQL_USER: postgres
+          POSTGRESQL_HOST: localhost
+          POSTGRESQL_DB: postgres
+          POSTGRESQL_PASSWORD: postgres
+          POSTGRESQL_PORT: 5432
 
