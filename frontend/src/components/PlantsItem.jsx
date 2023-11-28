@@ -6,7 +6,7 @@ const PlantsItem = props => {
 
     return (
         <Card>
-            <CardActionArea component={ NavLink } to={`plantinfo/${props.id - 1}`}>
+            <CardActionArea component={ NavLink } to={`/plants/${props.id }`}>
                 <CardContent sx={{ textAlign: "center" }}>
                     <CardMedia 
                         component="img"

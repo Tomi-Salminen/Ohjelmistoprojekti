@@ -14,6 +14,7 @@ import SignUpPage from './pages/SignUpPage'
 import PlantsPage from './pages/PlantsPage';
 import PlantInfo from './pages/PlantInfo';
 import PreviousWorkPage from './pages/PreviousWorkPage';
+import AdminPage from './pages/AdminPage';
 
 const queryClient = new QueryClient();
 let logoutTimer; 
@@ -94,7 +95,10 @@ export default function App() {
                   <Route path="/previouswork" element={<PreviousWorkPage />} />
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/signup" element={<SignUpPage />} />
-                  <Route path="/plants/plantinfo/:id" element={<PlantInfo />}/>
+                  <Route path="/plants/:id" element={<PlantInfo />}/>
+                  {userEmail == "admin@gmail.com" &&(
+                  <Route path="/admin" element={<AdminPage />} />
+                  )}
                   <Route exact path="*" element={<HomePage />} />
                 </Routes>
               </Container>

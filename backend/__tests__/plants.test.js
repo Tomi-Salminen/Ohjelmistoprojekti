@@ -13,48 +13,15 @@ describe('GET plants endoint', () => {
     });
   
   
-    /*test('should return 200 and valid JSON', async () => {
+    test('should return 200 and valid JSON', async () => {
       const response = await supertest(app)
         .get('/api/plants')
         .set('Accept', 'application/json');
   
       expect(response.status).toEqual(200);
       expect(response.headers['content-type']).toMatch(/json/);
-      expect(response.body).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({
-            id: 1,
-            name: "Peikonlehti",
-            description: "hieno kasvi",
-            price: "15.00",
-          }),
-          expect.objectContaining({
-            id: 2,
-            name: "Jukkapalmu",
-            description: "hieno kasvi",
-            price: "39.99",
-          }),
-          expect.objectContaining({
-            id: 3,
-            name: "Lyyranviikuna",
-            description: "hieno kasvi",
-            price: "69.99",
-          }),
-          expect.objectContaining({
-            id: 4,
-            name: "Kultapalmu",
-            description: "hieno kasvi",
-            price: "39.99",
-          }),
-          expect.objectContaining({
-            id: 5,
-            name: "Kiiltojukka",
-            description: "hieno kasvi",
-            price: "49.99",
-          }),
-        ]),
-      );
-    });*/
+      expect(response.body).not.toBe(null);
+    });
 });
 
 describe('GET plant by id endpoint', () => {
@@ -87,7 +54,7 @@ describe('GET plant by id endpoint', () => {
 });
 
 describe('POST plant endpoint', ()=> { 
-    /*const loggedInUser = {
+    const loggedInUser = {
       id: '',
       email: '',
       token: ''
@@ -95,13 +62,13 @@ describe('POST plant endpoint', ()=> {
   
     beforeAll(async () => {
       const data = {
-        name: 'Test User',
+        username: 'Test User',
         email: 'test@user.com',
         password: 'password123'
       }
   
       const response = await supertest(app)
-        .post('/api/users/signup')
+        .post('/api/accounts/signup')
         .set('Accept', 'application/json')
         .set('Content', 'application/json')
         .send(data)
@@ -109,9 +76,9 @@ describe('POST plant endpoint', ()=> {
       loggedInUser.email = response.body.email
       loggedInUser.token = response.body.token
     })
-    */
+    
     afterAll(async() => {
-      //connection.query('DELETE FROM users WHERE email=?', ['test@user.com']);      
+      pool.query("DELETE FROM accounts WHERE email LIKE 'test@user.com';");
       const deleteQuery = `DELETE FROM plants WHERE name LIKE 'test name' AND description LIKE 'test description';`;
       pool.query(deleteQuery, (err, result) => {
         if(err){
@@ -130,7 +97,7 @@ describe('POST plant endpoint', ()=> {
       const response = await supertest(app)
         .post('/api/plants')
         .set('Accept', 'application/json')
-        //.set('Authorization', 'Bearer ' + loggedInUser.token)
+        .set('Authorization', 'Bearer ' + loggedInUser.token)
         .set('Content', 'application/json')
         .send(plant);
   
@@ -150,7 +117,7 @@ describe('POST plant endpoint', ()=> {
         .post('/api/plants')
         .set('Accept', 'application/json')
         .set('Content', 'application/json')
-        //.set('Authorization', 'Bearer ' + loggedInUser.token)
+        .set('Authorization', 'Bearer ' + loggedInUser.token)
         .send(plant);
       expect(response.status).toEqual(400);
       expect(response.text).toContain('"name" is required');
@@ -165,7 +132,7 @@ describe('POST plant endpoint', ()=> {
         .post('/api/plants')
         .set('Accept', 'application/json')
         .set('Content', 'application/json')
-        //.set('Authorization', 'Bearer ' + loggedInUser.token)
+        .set('Authorization', 'Bearer ' + loggedInUser.token)
         .send(plant);
       expect(response.status).toEqual(400);
       expect(response.text).toContain('"description" is required');
@@ -180,7 +147,7 @@ describe('POST plant endpoint', ()=> {
           .post('/api/plants')
           .set('Accept', 'application/json')
           .set('Content', 'application/json')
-          //.set('Authorization', 'Bearer ' + loggedInUser.token)
+          .set('Authorization', 'Bearer ' + loggedInUser.token)
           .send(plant);
         expect(response.status).toEqual(400);
         expect(response.text).toContain('"price" is required');
@@ -197,7 +164,7 @@ describe('POST plant endpoint', ()=> {
           .post('/api/plants')
           .set('Accept', 'application/json')
           .set('Content', 'application/json')
-          //.set('Authorization', 'Bearer ' + loggedInUser.token)
+          .set('Authorization', 'Bearer ' + loggedInUser.token)
           .send(plant);
         expect(response.status).toEqual(400);
         expect(response.text).toContain('"name" is not allowed to be empty');
@@ -213,7 +180,7 @@ describe('POST plant endpoint', ()=> {
           .post('/api/plants')
           .set('Accept', 'application/json')
           .set('Content', 'application/json')
-          //.set('Authorization', 'Bearer ' + loggedInUser.token)
+          .set('Authorization', 'Bearer ' + loggedInUser.token)
           .send(plant);
         expect(response.status).toEqual(400);
         expect(response.text).toContain('"description" is not allowed to be empty');
@@ -229,7 +196,7 @@ describe('POST plant endpoint', ()=> {
           .post('/api/plants')
           .set('Accept', 'application/json')
           .set('Content', 'application/json')
-          //.set('Authorization', 'Bearer ' + loggedInUser.token)
+          .set('Authorization', 'Bearer ' + loggedInUser.token)
           .send(plant);
         expect(response.status).toEqual(400);
         expect(response.text).toContain('"price" is not allowed to be empty');
@@ -239,7 +206,7 @@ describe('POST plant endpoint', ()=> {
 });
 
 describe('UPDATE plants endpoint', () => {
-    /*const loggedInUser = {
+    const loggedInUser = {
       id: '',
       email: '',
       token: ''
@@ -247,23 +214,23 @@ describe('UPDATE plants endpoint', () => {
   
     beforeAll(async () => {
       const data = {
-        name: 'Test User',
-        email: 'test@user.com',
+        username: 'Test User',
+        email: 'test2@user.com',
         password: 'password123'
       }
   
       const response = await supertest(app)
-        .post('/api/users/signup')
+        .post('/api/accounts/signup')
         .set('Accept', 'application/json')
         .set('Content', 'application/json')
         .send(data)
       loggedInUser.id = response.body.id
       loggedInUser.email = response.body.email
       loggedInUser.token = response.body.token
-    });*/
+    });
 
     afterAll(async() => {      
-      //connection.query('DELETE FROM users WHERE email=?', ['test@user.com'])
+      pool.query("DELETE FROM accounts WHERE email LIKE 'test2@user.com';");
       const deleteQuery = `DELETE FROM plants WHERE name LIKE 'update test name' AND description LIKE 'update test description';`;
       pool.query(deleteQuery, (err, result) => {
         if(err){
@@ -282,7 +249,7 @@ describe('UPDATE plants endpoint', () => {
         .post('/api/plants')
         .set('Accept', 'application/json')
         .set('Content', 'application/json')
-        //.set('Authorization', 'Bearer ' + loggedInUser.token)
+        .set('Authorization', 'Bearer ' + loggedInUser.token)
         .send(plant);
       const postId = postResponse.body.id;
       const updatedplant = {
@@ -294,7 +261,7 @@ describe('UPDATE plants endpoint', () => {
         .put(`/api/plants/${postId}`)
         .set('Accept', 'application/json')
         .set('Content', 'application/json')
-        //.set('Authorization', 'Bearer ' + loggedInUser.token)
+        .set('Authorization', 'Bearer ' + loggedInUser.token)
         .send(updatedplant);
       expect(response.status).toEqual(200);
       expect(response.text).toEqual('Plant information updated');
@@ -304,7 +271,7 @@ describe('UPDATE plants endpoint', () => {
       const response = await supertest(app)
         .get('/api/plants/100001')
         .set('Accept', 'application/json')
-        //.set('Authorization', 'Bearer ' + loggedInUser.token);
+        .set('Authorization', 'Bearer ' + loggedInUser.token);
   
       expect(response.status).toEqual(404);
       expect(response.text).toEqual('Not Found');
@@ -312,7 +279,7 @@ describe('UPDATE plants endpoint', () => {
   });
 
 describe('DELETE plants endpoint', () => {
-  /*const loggedInUser = {
+  const loggedInUser = {
     id: '',
     email: '',
     token: ''
@@ -320,13 +287,13 @@ describe('DELETE plants endpoint', () => {
 
   beforeAll(async () => {
     const data = {
-      name: 'Test User',
-      email: 'test@user.com',
+      username: 'Test User',
+      email: 'test3@user.com',
       password: 'password123'
     }
 
     const response = await supertest(app)
-      .post('/api/users/signup')
+      .post('/api/accounts/signup')
       .set('Accept', 'application/json')
       .set('Content', 'application/json')
       .send(data)
@@ -336,9 +303,8 @@ describe('DELETE plants endpoint', () => {
   })
 
   afterAll(async() => {
-    connection.query('DELETE FROM users WHERE email=?', ['test@user.com']);
+    pool.query("DELETE FROM accounts WHERE email LIKE 'test3@user.com';");
   });
-*/
 
   test('should delete the plant by id', async () => {
     const plant = {
@@ -350,14 +316,14 @@ describe('DELETE plants endpoint', () => {
       .post('/api/plants')
       .set('Accept', 'application/json')
       .set('Content', 'application/json')
-      //.set('Authorization', 'Bearer ' + loggedInUser.token)
+      .set('Authorization', 'Bearer ' + loggedInUser.token)
       .send(plant);
     const postId = postResponse.body.id;
     const response = await supertest(app)
       .delete(`/api/plants/${postId}`)
       .set('Accept', 'application/json')
       .set('Content', 'application/json')
-      //.set('Authorization', 'Bearer ' + loggedInUser.token);
+      .set('Authorization', 'Bearer ' + loggedInUser.token);
     expect(response.status).toEqual(200);
     expect(response.text).toEqual('Plant deleted');
   });
@@ -366,7 +332,7 @@ describe('DELETE plants endpoint', () => {
     const response = await supertest(app)
       .delete('/api/plants/100001')
       .set('Accept', 'application/json')
-      //.set('Authorization', 'Bearer ' + loggedInUser.token);
+      .set('Authorization', 'Bearer ' + loggedInUser.token);
 
     expect(response.status).toEqual(404);
     expect(response.text).toEqual('Not Found');

@@ -8,9 +8,6 @@ CREATE TABLE IF NOT EXISTS accounts (
   last_login TIMESTAMP
 );
 
-INSERT INTO accounts(user_id, username, password, email, created_on, last_login)
-VALUES ('admin', 'admin', 'admin', 'admin@admin.com', TIMESTAMP '1999-01-08 04:05:06', TIMESTAMP '1999-01-08 04:05:06');
-
 
 CREATE TABLE IF NOT EXISTS plants (
   id serial PRIMARY KEY,
