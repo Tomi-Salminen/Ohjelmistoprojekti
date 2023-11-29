@@ -9,7 +9,10 @@ const pool = new Pool({
   password: process.env.POSTGRESQL_PASSWORD,
   port: process.env.POSTGRESQL_PORT,
   max: 20,
-  ssl: process.env.ENABLE_SSL || false
+  ssl: process.env.ENABLE_SSL || false,
+  poolIdleTimeout: 60000,
+  idleTimeoutMillis: 60000,
+  connectionTimeoutMillis: 10000
 })
 
 module.exports = pool;
