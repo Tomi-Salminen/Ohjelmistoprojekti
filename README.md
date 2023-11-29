@@ -14,6 +14,11 @@ In root folder
 Create .env file in backend folder:
 ```
     JWT_KEY="whatEverYouWant"
+    POSTGRESQL_USER=postgres
+    POSTGRESQL_HOST=localhost
+    POSTGRESQL_DB=postgres
+    POSTGRESQL_PASSWORD=postgres
+    POSTGRESQL_PORT=5432
 ```
 
 In backend folder:
