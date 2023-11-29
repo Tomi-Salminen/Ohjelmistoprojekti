@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { signUpUser } from "../api/users";
 import { AuthContext } from "../components/auth-context";
@@ -11,7 +11,7 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Joi from "joi";
 
 const accountSchema = Joi.object().keys({
@@ -28,6 +28,7 @@ const SignUpPage = () => {
   const [passwordError, setPasswordError] = useState("");
   const [errorText, setErrorText] = useState("");
   const auth = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const signUpUserMutation = useMutation({
     mutationFn: signUpUser,
@@ -65,6 +66,9 @@ const SignUpPage = () => {
       email: data.get("email"),
       password: data.get("password"),
     });
+
+    //Switch to homepage after sign up
+    navigate("/");
   };
 
   return (
