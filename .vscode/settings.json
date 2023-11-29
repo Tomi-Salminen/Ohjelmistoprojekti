@@ -1,14 +1,17 @@
 {
     "sqltools.connections": [
         {
+            "pgOptions": {
+                "ssl": true
+            },
             "previewLimit": 50,
-            "server": "localhost",
+            "server": "dpg-clis05km411s73dtfe0g-a.frankfurt-postgres.render.com",
             "port": 5432,
             "driver": "PostgreSQL",
-            "name": "plant",
-            "database": "postgres",
-            "username": "postgres",
-            "password": "postgres"
+            "name": "render-db",
+            "password": "CKlhYvhukTmuY2lCUubcM2tCd6KqUpQe",
+            "username": "kayttaja",
+            "database": "kasvi_db"
         }
     ]
 }
