@@ -1,4 +1,10 @@
 # Ohjelmistoprojekti
+
+The project is a website created for a company invented by a group of international business students. The company sells plants and flowers for other companies and offers a maintenance service to upkeep them. The website has the functionality to sign up and login with a username and a password. It is also possible to log in as an admin user to add or delete plants from the collection that the website showcases.
+
+The team members are Ilari Ijäs, Eero Kokkonen, Tomi Salminen and Marika Verger.
+
+
 ## Backend
 In root folder
 ```
@@ -40,3 +46,5 @@ In frontend folder:
     npm install
     npm run dev
 ```
+
+DEPLOY LINK WILL BE ADDED HERE! 
