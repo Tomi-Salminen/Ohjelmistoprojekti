@@ -52,4 +52,5 @@ In frontend folder:
     npm run dev
 ```
 
-DEPLOY LINK WILL BE ADDED HERE! 
+## Link for website
+https://kasvi-sivu-frontend.onrender.com/
