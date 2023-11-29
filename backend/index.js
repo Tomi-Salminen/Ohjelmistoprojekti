@@ -5,6 +5,7 @@ const plantsRoutes = require("./routes/plants");
 const ordersRoutes = require("./routes/orders");
 require("dotenv").config();
 
+
 const cors = require("cors");
 const app = express();
 

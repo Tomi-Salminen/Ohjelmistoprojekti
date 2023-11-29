@@ -52,8 +52,11 @@ jobs:
         env:
           #TODO: Lisää tämä githubin "secretiksi"
           JWT_KEY: YOURSECRETKEYGOESHERE
-          #TODO: Lisää env muuttujat
+          POSTGRESQL_USER: postgres
+          POSTGRESQL_HOST: localhost
+          POSTGRESQL_DB: postgres
+          POSTGRESQL_PASSWORD: postgres
+          POSTGRESQL_PORT: 5432
           
       - name: Trigger Deploy on Render
         run: curl -X GET https://api.render.com/deploy/srv-clicdkvjc5ks73es9v1g?key=WFTbShhfk3M
-

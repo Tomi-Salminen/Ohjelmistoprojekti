@@ -1,15 +1,17 @@
 const { Pool } = require('pg')
+require("dotenv").config();
 
-// TODO: siirrä nämä .env tiedostoon ja tee tarvitavat muutokset workflow tiedosotihin
+
 const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'postgres',
-  password: 'postgres',
-  port: 5432,
+  user: process.env.POSTGRESQL_USER,
+  host: process.env.POSTGRESQL_HOST,
+  database: process.env.POSTGRESQL_DB,
+  password: process.env.POSTGRESQL_PASSWORD,
+  port: process.env.POSTGRESQL_PORT,
   max: 20,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 2000,
+  ssl: process.env.ENABLE_SSL || false
 })
 
 module.exports = pool;
