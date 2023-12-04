@@ -24,6 +24,7 @@ const LoginPage = () => {
     mutationFn: loginUser,
     onSuccess: (data) => {
       auth.login(data.id, data.token, data.email);
+      navigate("/");
     },
     onError: (error) => {
       console.log(error);
@@ -40,8 +41,6 @@ const LoginPage = () => {
       email: data.get("email"),
       password: data.get("password"),
     });
-    
-    navigate("/");
   };
 
   return (

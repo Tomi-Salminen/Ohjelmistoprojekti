@@ -34,6 +34,7 @@ const SignUpPage = () => {
     mutationFn: signUpUser,
     onSuccess: (data) => {
       auth.login(data.id, data.token, data.email);
+      navigate("/");
     },
     onError: (error) => {
       if (error.message == 422) setEmailError("Email already exists!");
@@ -66,9 +67,6 @@ const SignUpPage = () => {
       email: data.get("email"),
       password: data.get("password"),
     });
-
-    //Switch to homepage after sign up
-    navigate("/");
   };
 
   return (
