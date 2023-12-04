@@ -56,6 +56,6 @@ In frontend folder:
 https://kasvi-sivu-frontend.onrender.com/
 
 ## Admin user
-With admin user you can create new plants to website. 
-Username: admin@gmail.com 
-Password: admin@gmail.com 
+With admin user you can create new plants to website. <br />
+Username: admin@gmail.com <br />
+Password: admin@gmail.com <br />
