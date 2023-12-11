@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "pgOptions": {
+                "ssl": true
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "driver": "PostgreSQL",
+            "name": "kasvi",
+            "connectString": "postgres://kayttaja:CKlhYvhukTmuY2lCUubcM2tCd6KqUpQe@dpg-clis05km411s73dtfe0g-a.frankfurt-postgres.render.com/kasvi_db"
+        }
+    ]
+}

@@ -8,39 +8,42 @@ import { Link } from 'react-router-dom';
 
 const placeholderServicePackages = [
   {
-    title: 'Basic',
-    price: '45',
+    title: 'Serenity Oasis Package',
+    price: '75',
     tierColor: '#479066',
     description: [
-      'desc 1',
-      'desc 2',
-      'desc 3'
+      'Starting price: 700 €',
+      'Design: Tranquil layouts for a harmonious workplace',
+      'Implementation: 20 cm2',
+      'Maintenance: Once a month care to preserve the serenity'
     ],
     buttonText: 'Sign up to order',
     buttonVariant: 'outlined',
   },
   {
-    title: 'Premium',
-    price: '69',
+    title: 'Verdant Haven Package',
+    price: '120',
     tierColor: '#C0C0C0',
     description: [
-      'desc 1',
-      'desc 2',
-      'desc 3'
+      'Starting price: 1100 €',
+      'Design: A rich and diverse haven of green landscapes',
+      'Implementation: 35 cm2',
+      'Maintenance: Twice a month nurturing for a continuously flourishing environment',
     ],
     buttonText: 'Sign up to order',
     buttonVariant: 'outlined',
   },
   {
-    title: 'Golden',
-    price: '100',
+    title: 'Elysian Grove Package',
+    price: '200',
     tierColor: '#D4AF37',
     description: [
-      'desc 1',
-      'desc 2',
-      'desc 3'
+      'Starting price: 1600 €',
+      'Design: Breathtaking and expansive green spaces',
+      'Implementation: <50 cm2 of curated botanical beauty',
+      'Maintenance: Weekly visits to ensure an Elysian atmosphere',
     ],
-    buttonText: 'you cant afford this',
+    buttonText: 'Sign up to order',
     buttonVariant: 'outlined',
   }
 ]
@@ -183,13 +186,14 @@ const ServicesPage = () => {
         Pricing
       </Typography>
       {/* Pricing */}
-      <Container maxWidth="md" component="main">
+      <Container maxWidth="xl" component="main">
         <Grid container spacing={5} alignItems="flex-end">
           {placeholderServicePackages.map((service) => (
             <Grid
               item
               key={service.title}
               xs={12}
+              
               sm={service === 'Enterprise' ? 12 : 6}
               md={4}
             >
@@ -200,6 +204,7 @@ const ServicesPage = () => {
                     fontSize: 40,
                     display: { md: 'flex' },
                     mr: 1,
+                    minHeight: 100,
                     color: service.tierColor
                   }} 
                 />
@@ -223,9 +228,9 @@ const ServicesPage = () => {
                       /mo
                     </Typography>
                   </Box>
-                  <ul>
+                  <ul style={{minHeight:200}}>
                     {service.description.map((line) => (
-                      <Typography component="li" variant="subtitle1" align="center" key={line}>
+                      <Typography component="li" variant="subtitle1" key={line}>
                         {line}
                       </Typography>
                     ))}

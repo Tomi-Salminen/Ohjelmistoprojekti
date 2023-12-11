@@ -85,7 +85,7 @@ const Navbar = () => {
               marginBottom: '-4px'
             }}
           >
-            Greenies
+            Nature Insight
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -140,7 +140,7 @@ const Navbar = () => {
               textDecoration: 'none',
             }}
           >
-            Greenies
+            Nature Insight
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent: 'space-evenly' } }}>
             {pages.map((page) => (
